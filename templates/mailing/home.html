@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Сервис рассылок{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">Добро пожаловать в сервис рассылок!</h1>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Всего рассылок</h5>
+                        <h2 class="card-text">{{ total_mailings }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Активные рассылки</h5>
+                        <h2 class="card-text">{{ active_mailings }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Уникальных клиентов</h5>
+                        <h2 class="card-text">{{ unique_clients }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h3>Быстрые действия</h3>
+            <div class="btn-group" role="group">
+                <a href="{% url 'admin:mailing_client_add' %}" class="btn btn-outline-primary">Добавить клиента</a>
+                <a href="{% url 'admin:mailing_message_add' %}" class="btn btn-outline-primary">Создать сообщение</a>
+                <a href="{% url 'admin:mailing_mailing_add' %}" class="btn btn-outline-primary">Создать рассылку</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
