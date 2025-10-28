@@ -1,45 +1,85 @@
 {% extends 'base.html' %}
 
-{% block title %}Главная - Сервис рассылок{% endblock %}
-
 {% block content %}
 <div class="row">
     <div class="col-md-12">
-        <h1 class="mb-4">Добро пожаловать в сервис рассылок!</h1>
-        
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-body">
+        <h1 class="text-center mb-4">📨 Сервис рассылок</h1>
+
+        <!-- Статистика в карточках с иконками -->
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="card border-primary">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-2">📊</div>
                         <h5 class="card-title">Всего рассылок</h5>
-                        <h2 class="card-text">{{ total_mailings }}</h2>
+                        <h2 class="card-text text-primary">{{ mailings_count }}</h2>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Активные рассылки</h5>
-                        <h2 class="card-text">{{ active_mailings }}</h2>
+            <div class="col-md-3">
+                <div class="card border-success">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-2">🟢</div>
+                        <h5 class="card-title">Активные</h5>
+                        <h2 class="card-text text-success">{{ active_mailings }}</h2>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Уникальных клиентов</h5>
-                        <h2 class="card-text">{{ unique_clients }}</h2>
+            <div class="col-md-3">
+                <div class="card border-info">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-2">👥</div>
+                        <h5 class="card-title">Клиентов</h5>
+                        <h2 class="card-text text-info">{{ clients_count }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-warning">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-2">📈</div>
+                        <h5 class="card-title">Доставлено</h5>
+                        <h2 class="card-text text-warning">{{ delivered_count }}%</h2>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mt-4">
-            <h3>Быстрые действия</h3>
-            <div class="btn-group" role="group">
-                <a href="{% url 'admin:mailing_client_add' %}" class="btn btn-outline-primary">Добавить клиента</a>
-                <a href="{% url 'admin:mailing_message_add' %}" class="btn btn-outline-primary">Создать сообщение</a>
-                <a href="{% url 'admin:mailing_mailing_add' %}" class="btn btn-outline-primary">Создать рассылку</a>
+        <!-- Быстрые действия -->
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">🚀 Быстрые действия</h5>
+                        <div class="d-grid gap-2 d-md-flex">
+                            <a href="/admin/mailing/client/add/" class="btn btn-primary me-md-2">
+                                <i class="bi bi-person-plus"></i> Добавить клиента
+                            </a>
+                            <a href="/admin/mailing/message/add/" class="btn btn-success me-md-2">
+                                <i class="bi bi-envelope-plus"></i> Создать сообщение
+                            </a>
+                            <a href="/admin/mailing/mailing/add/" class="btn btn-info">
+                                <i class="bi bi-send-plus"></i> Создать рассылку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Последние активности -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">📋 Последние активности</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Сегодня 14:30 - Рассылка "Новости недели" завершена</li>
+                            <li class="list-group-item">Сегодня 11:15 - Добавлено 15 новых клиентов</li>
+                            <li class="list-group-item">Вчера 16:40 - Создана рассылка "Спецпредложение"</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
